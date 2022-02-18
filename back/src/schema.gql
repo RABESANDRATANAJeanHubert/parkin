@@ -1,0 +1,208 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Service {
+  id: Int!
+  intitule: String!
+  employes: [Employe!]!
+}
+
+type Employe {
+  id: Int!
+  nom: String!
+  role: Int!
+  salaire: Int!
+  service: Service!
+}
+
+type User {
+  id: Int!
+  firstName: String!
+  lastName: String!
+  username: String!
+  password: String!
+  avatar: String!
+  nickName: String!
+  publicName: String!
+  biography: String!
+  confirmed: String!
+  contacts: String!
+  role: Int!
+  updatedAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Vehicule {
+  id: Int!
+  libelle: String!
+  type: String!
+}
+
+type City {
+  id: Int!
+  country_id: String!
+  name: String!
+  created_at: DateTime!
+  update_at: DateTime!
+  delete_at: DateTime!
+}
+
+type Country {
+  id: Int!
+  country_code: String!
+  name: String!
+  created_at: DateTime!
+  update_at: DateTime!
+  delete_at: DateTime!
+}
+
+type Parking {
+  id: Int!
+  adress: String!
+  type: String!
+}
+
+type Place {
+  id: Int!
+  available: String!
+  currentUser: String!
+  nextUser: String!
+}
+
+type Query {
+  getAll: String!
+  employees: [Employe!]!
+  users: [User!]!
+  services: [Service!]!
+  service(id: Int!): Service!
+  vehicules: [Vehicule!]!
+  countries: [Country!]!
+  cities: [City!]!
+  parking: [Parking!]!
+  places: [Place!]!
+}
+
+type Mutation {
+  createEmploye(input: CreateEmployeInput!): Employe!
+  updateEmploye(updateEmployeInput: UpdateEmployeInput!): Employe!
+  removeEmploye(id: Int!): Employe!
+  createUser(image: Upload, input: CreateUserInput!): User!
+  updateUser(image: Upload, input: UpdateUserInput!): User!
+  softRemoveUser(id: Int!): Boolean!
+  createService(input: CreateServiceInput!): Service!
+  updateService(input: UpdateServiceInput!): Service!
+  removeService(id: Int!): Boolean!
+  createVehicule(input: CreateVehiculeInput!): Vehicule!
+  updateVehicule(input: UpdateVehiculeInput!): Vehicule!
+  removeVehicule(id: Int!): Vehicule!
+  createCountry(input: CreateCityInput!): City!
+  updateCountry(input: UpdateCityInput!): City!
+  removeCountry(id: Int!): City!
+  createParking(input: CreateParkingInput!): Parking!
+  updateParking(input: UpdateParkingInput!): Parking!
+  removeParking(id: Int!): Parking!
+  createPlace(input: CreatePlaceInput!): Place!
+  updatePlace(input: UpdatePlaceInput!): Place!
+  removePlace(id: Int!): Place!
+}
+
+input CreateEmployeInput {
+  serviceId: Int!
+  nom: String!
+  salaire: Int!
+}
+
+input UpdateEmployeInput {
+  serviceId: Int
+  nom: String
+  salaire: Int
+  id: Int!
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+input CreateUserInput {
+  lastName: String!
+  firstName: String!
+  role: Int!
+  nickName: String!
+  publicName: String!
+  biography: String!
+  confirmed: String!
+  contacts: String!
+  username: String
+}
+
+input UpdateUserInput {
+  lastName: String!
+  firstName: String!
+  role: Int!
+  nickName: String!
+  publicName: String!
+  biography: String!
+  confirmed: String!
+  contacts: String!
+  username: String
+  id: Int!
+}
+
+input CreateServiceInput {
+  intitule: String!
+}
+
+input UpdateServiceInput {
+  intitule: String
+  id: Int!
+}
+
+input CreateVehiculeInput {
+  libelle: String!
+  type: String!
+}
+
+input UpdateVehiculeInput {
+  libelle: String
+  type: String
+  id: Int!
+}
+
+input CreateCityInput {
+  country_id: String!
+  name: String!
+}
+
+input UpdateCityInput {
+  country_id: String
+  name: String
+  id: Int!
+}
+
+input CreateParkingInput {
+  address: String!
+  type: String!
+}
+
+input UpdateParkingInput {
+  address: String
+  type: String
+  id: Int!
+}
+
+input CreatePlaceInput {
+  availabel: String!
+  currentUser: String!
+  nextUser: String!
+}
+
+input UpdatePlaceInput {
+  availabel: String
+  currentUser: String
+  nextUser: String
+  id: Int!
+}
